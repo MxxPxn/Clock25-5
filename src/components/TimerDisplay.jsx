@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import '../App.css';
 
 
 function TimerDisplay() {
@@ -71,43 +72,99 @@ const handleIncrement = (type, max = 60) => {
 
 }
 
-
- return (   
-    <div className="clock__body">
-
+return(
+<div className="app-container">
+      <div className="clock__body">
         <h1>25 + 5 Clock</h1>
-        <div id="break">
-         <div id="break-label">
-            Break Length
-            <button id="break-decrement" onClick={() => handleDecrement('break')}>-</button>
-            <div id="break-length">{breakLength}</div>
-            <button id="break-increment" onClick={() => handleIncrement('break')}>+</button>
-        </div>
+        
+        <div className="controls-container">
+          <div className="control-section">
+            <div className="control-label" id="break-label">
+              Break Length
+            </div>
+            <div className="control-buttons">
+              <button
+                id="break-decrement"
+                className="control-btn"
+                onClick={() => handleDecrement('break')}
+                disabled={isRunning}
+              >
+                −
+              </button>
+              <div className="control-value" id="break-length">
+                {breakLength}
+              </div>
+              <button
+                id="break-increment"
+                className="control-btn"
+                onClick={() => handleIncrement('break')}
+                disabled={isRunning}
+              >
+                +
+              </button>
+            </div>
+          </div>
+
+          <div className="control-section">
+            <div className="control-label" id="session-label">
+              Session Length
+            </div>
+            <div className="control-buttons">
+              <button
+                id="session-decrement"
+                className="control-btn"
+                onClick={() => handleDecrement('session')}
+                disabled={isRunning}
+              >
+                −
+              </button>
+              <div className="control-value" id="session-length">
+                {sessionLength}
+              </div>
+              <button
+                id="session-increment"
+                className="control-btn"
+                onClick={() => handleIncrement('session')}
+                disabled={isRunning}
+              >
+                +
+              </button>
+            </div>
+          </div>
         </div>
 
-        <div id="session">
-        <div id="session-label">
-            Session Length
-            <button id="session-decrement" onClick={() => handleDecrement('session')}>-</button>
-            <div id="session-length">{sessionLength}</div>
-            <button id="session-increment" onClick={() => handleIncrement('session')}>+</button>
-        </div>
-        </div>
-
-        <div id="timer-label">
+        <div className={`timer-display ${currentMode.toLowerCase()}-mode ${isRunning ? 'running' : ''}`}>
+          <div className="timer-label" id="timer-label">
             {currentMode}
-            <div id="time-left">{`${minsLeft < 10 ? '0' + minsLeft : minsLeft}:${secsLeft < 10 ? '0' + secsLeft : secsLeft}`}</div>
+          </div>
+          <div className="time-display" id="time-left">
+            {`${minsLeft < 10 ? '0' + minsLeft : minsLeft}:${secsLeft < 10 ? '0' + secsLeft : secsLeft}`}
+          </div>
         </div>
 
-        <div className="timer-control">
-            <button id="start_stop" onClick={handleStartStop}>start/stop</button>
-            <button id="reset" onClick={handleReset}>reset</button>
-            <audio id="beep" src="https://raw.githubusercontent.com/freeCodeCamp/cdn/master/build/testable-projects-fcc/audio/BeepSound.wav"/>
+        <div className="timer-controls">
+          <button
+            id="start_stop"
+            className={`timer-btn start-stop-btn ${isRunning ? 'running' : ''}`}
+            onClick={handleStartStop}
+          >
+            {isRunning ? 'Pause' : 'Start'}
+          </button>
+          <button
+            id="reset"
+            className="timer-btn reset-btn"
+            onClick={handleReset}
+          >
+            Reset
+          </button>
         </div>
-
+        
+        <audio
+          id="beep"
+          src="https://raw.githubusercontent.com/freeCodeCamp/cdn/master/build/testable-projects-fcc/audio/BeepSound.wav"
+        />
+      </div>
     </div>
-
-    
- );
+  );
 }
 export default TimerDisplay;
