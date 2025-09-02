@@ -1,13 +1,9 @@
-/* 
+ 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-
-body {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-} */
 
 .app-container {
   min-height: 100vh;
@@ -19,6 +15,7 @@ body {
 }
 
 .clock__body {
+ font-family: 'Orbitron', sans-serif;;
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
   border-radius: 24px;
@@ -128,7 +125,7 @@ body {
   color: #fff;
   font-size: 4rem;
   font-weight: bold;
-  font-family: monospace;
+  font-family: 'Orbitron', sans-serif;
   letter-spacing: 3px;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
@@ -140,6 +137,7 @@ body {
 }
 
 .timer-btn {
+  font-family: 'Orbitron', sans-serif;
   border: none;
   border-radius: 50px;
   padding: 15px 30px;
