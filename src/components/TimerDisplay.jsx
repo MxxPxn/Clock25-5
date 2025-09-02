@@ -58,7 +58,7 @@ const handleDecrement = (type) => {
         setBreakLength((prev) => Math.max(1, prev - 1));
     } else if (type === 'session') {
         setSessionLength((prev) => Math.max(1, prev - 1));
-        setMinsLeft((prev) => Math.max(1, prev - 1));
+        setMinsLeft((prev) => Math.max(1, prev - 1)); 
     }
 }
 const handleIncrement = (type, max = 60) => {
